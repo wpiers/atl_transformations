@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:relational="http:///schemas/relational/_1xjRYFxxEdy9ZeGhUWzsNw/1" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http:///schemas/relational/_1xjRYFxxEdy9ZeGhUWzsNw/1 entity.uml#_1xsbUFxxEdy9ZeGhUWzsNw">
+  <uml:Model xmi:id="_GvSYkJ_rEduSF4kFqdqOMg" name="SampleModel">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_eM4EYJ_rEduSF4kFqdqOMg" name="Integer"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_fCrD8J_rEduSF4kFqdqOMg" name="String"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Ji2FUJ_rEduSF4kFqdqOMg" name="SamplePackage">
+      <packagedElement xmi:type="uml:Class" xmi:id="_KEOUEJ_rEduSF4kFqdqOMg" name="Class1">
+        <ownedAttribute xmi:id="_npkoUJ_rEduSF4kFqdqOMg" name="p11" type="_fCrD8J_rEduSF4kFqdqOMg"/>
+        <ownedAttribute xmi:id="_n9-yEJ_rEduSF4kFqdqOMg" name="p12" type="_eM4EYJ_rEduSF4kFqdqOMg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_KhuvcJ_rEduSF4kFqdqOMg" name="Class2">
+        <ownedAttribute xmi:id="_Nx5fsJ_rEduSF4kFqdqOMg" name="p21" type="_fCrD8J_rEduSF4kFqdqOMg"/>
+        <ownedAttribute xmi:id="_N7b2MJ_rEduSF4kFqdqOMg" name="p22" type="_eM4EYJ_rEduSF4kFqdqOMg"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_fIlrAFxyEdyJFZofpaWCkg">
+      <eAnnotations xmi:id="_fIlrAVxyEdyJFZofpaWCkg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="entity.uml#_1xsbUFxxEdy9ZeGhUWzsNw"/>
+      </eAnnotations>
+      <appliedProfile href="entity.uml#_nzsm8J_mEduSF4kFqdqOMg"/>
+    </profileApplication>
+  </uml:Model>
+  <relational:Table xmi:id="_UZuHQJYwEeK-c5nqA5uTPQ" base_Class="_KEOUEJ_rEduSF4kFqdqOMg"/>
+  <relational:Table xmi:id="_VTb9gJYwEeK-c5nqA5uTPQ" base_Class="_KhuvcJ_rEduSF4kFqdqOMg"/>
+</xmi:XMI>

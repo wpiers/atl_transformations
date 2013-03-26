@@ -1,0 +1,139 @@
+--/*******************************************************************************
+-- * Copyright (c) 2010, 2013 Obeo.
+-- * All rights reserved. This program and the accompanying materials
+-- * are made available under the terms of the Eclipse Public License v1.0
+-- * which accompanies this distribution, and is available at
+-- * http://www.eclipse.org/legal/epl-v10.html
+-- * 
+-- * Contributors:
+-- *     Obeo - initial API and implementation
+-- *******************************************************************************/
+
+-- @nsURI Entity=http://www.obeonetwork.org/dsl/entity/2.0.0
+-- @nsURI UML=http://www.eclipse.org/uml2/3.0.0/UML
+-- @nsURI ENV=http://www.obeonetwork.org/dsl/environment/2.0.0
+
+
+module UML2Entity;
+create OUT: Entity from IN: UML, TYPES: ENV;
+
+helper context UML!Element def: hasStereotype(stereotype: String): Boolean =
+	self.getAppliedStereotypes() -> collect(st | st.name) -> includes(stereotype);
+
+helper context UML!Type def: convertToUMLPrimitiveType(): ENV!PrimitiveType =
+	ENV!PrimitiveType.allInstances() -> select(t | t.name = self.name) -> first();
+
+helper context UML!Property def: isEntityAttribute(): Boolean =
+	not self.type.oclIsTypeOf(UML!Class) and self.refImmediateComposite().
+			hasStereotype('Entity');
+
+helper context UML!Property def: isEntityReference(): Boolean =
+	self.type.oclIsTypeOf(UML!Class) and if self.type.oclIsUndefined() then
+		true
+	else
+		self.type.hasStereotype('Entity')
+	endif;
+
+helper context UML!Package def: belongsToEntity(): Boolean =
+	(not (self.ownedElement -> select(e | e.oclIsTypeOf(UML!Class) and e.
+			hasStereotype('Entity')) -> isEmpty())) or (not (self.ownedElement ->
+			select(e | e.oclIsTypeOf(UML!Package)) -> select(p | p.belongsToEntity())) ->
+			isEmpty());
+
+rule ModelRule {
+	from
+		input: UML!Model
+	to
+		output: Entity!Root (
+			blocks <- input.ownedElement -> select(e | e.oclIsTypeOf(UML!Package))
+		)
+}
+
+rule PackageRule {
+	from
+		input: UML!Package (
+			input.oclIsTypeOf(UML!Package) and input.belongsToEntity()
+		)
+	to
+		output: Entity!Block (
+			name <- input.name,
+			subblocks <- input.ownedElement -> select(e | e.oclIsTypeOf(UML!Package)) ->
+					select(p | p.belongsToEntity()),
+			entities <- input.ownedElement -> select(e | e.oclIsTypeOf(UML!Class) and e.
+					hasStereotype('Entity'))
+		)
+}
+
+rule ClassRule {
+	from
+		input: UML!Class (
+			input.hasStereotype('Entity')
+		)
+	to
+		output: Entity!Entity (
+			name <- input.name,
+			ownedAttributes <- input.ownedAttribute -> select(a | a.isEntityAttribute()),
+			ownedReferences <- UML!Association.allInstances() -> select(a1 | a1.ownedEnd
+					-> collect(e | e.type) -> flatten() -> includes(input)) -> collect(a2
+					| a2.navigableOwnedEnd) -> flatten() -> select(n | n.type <> input
+					and n.isEntityReference()) -> collect(tmp | thisModule.
+					ReferenceRule(tmp)),
+			supertype <- input.superClass -> first()
+		)
+}
+
+rule AttributeRule {
+	from
+		input: UML!Property (
+			input.isEntityAttribute()
+		)
+	to
+		output: Entity!Attribute (
+			name <- input.name,
+			multiplicity <- if input.lower = 0 then
+					if input.upper = 1 then
+						'0..1'
+					else
+						'0..*'
+					endif
+				else
+					if input.upper = 1 then
+						'1'
+					else
+						'1..*'
+					endif
+				endif,
+			type <- if input.type.oclIsUndefined() then
+					OclUndefined
+				else
+					input.type.convertToUMLPrimitiveType()
+				endif
+		)
+}
+
+unique lazy rule ReferenceRule {
+	from
+		input: UML!Property (
+			input.isEntityReference()
+		)
+	to
+		output: Entity!Reference (
+			name <- input.name,
+			multiplicity <- if input.lower = 0 then
+					if input.upper = 1 then
+						'0..1'
+					else
+						'0..*'
+					endif
+				else
+					if input.upper = 1 then
+						'1'
+					else
+						'1..*'
+					endif
+				endif,
+			type <- input.type,
+			isComposite <- input.aggregation = 'composition',
+			oppositeOf <- input.opposite
+		)
+}

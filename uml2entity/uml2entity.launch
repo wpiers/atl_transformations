@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2m.atl.adt.launching.atlTransformation">
+<stringAttribute key="ATL File Name" value="/uml2entity/src/uml2entity/files/UML2Entity.atl"/>
+<stringAttribute key="ATL VM" value="EMF-specific VM"/>
+<stringAttribute key="ATL_COMPILER" value="atl2006"/>
+<booleanAttribute key="IS_REFINING" value="false"/>
+<mapAttribute key="Input">
+<mapEntry key="IN" value="UML"/>
+<mapEntry key="TYPES" value="ENV"/>
+</mapAttribute>
+<mapAttribute key="Libs"/>
+<mapAttribute key="Model Handler">
+<mapEntry key="ENV" value="EMF"/>
+<mapEntry key="Entity" value="EMF"/>
+<mapEntry key="UML" value="EMF"/>
+</mapAttribute>
+<mapAttribute key="ModelType">
+<mapEntry key="ENV" value="METAMODELINPUT"/>
+<mapEntry key="Entity" value="METAMODELOUTPUT"/>
+<mapEntry key="IN" value="MODELINPUT"/>
+<mapEntry key="OUT" value="MODELOUTPUT"/>
+<mapEntry key="TYPES" value="MODELINPUT"/>
+<mapEntry key="UML" value="METAMODELINPUT"/>
+</mapAttribute>
+<mapAttribute key="Options">
+<mapEntry key="OPTION_CLEAR" value="false"/>
+<mapEntry key="OPTION_CONTENT_TYPE" value="false"/>
+<mapEntry key="OPTION_DERIVED" value="true"/>
+<mapEntry key="allowInterModelReferences" value="true"/>
+<mapEntry key="printExecutionTime" value="false"/>
+<mapEntry key="step" value="false"/>
+<mapEntry key="supportUML2Stereotypes" value="false"/>
+</mapAttribute>
+<listAttribute key="OrderedInput">
+<listEntry value="IN"/>
+<listEntry value="TYPES"/>
+</listAttribute>
+<listAttribute key="OrderedOutput">
+<listEntry value="OUT"/>
+</listAttribute>
+<mapAttribute key="Output">
+<mapEntry key="OUT" value="Entity"/>
+</mapAttribute>
+<mapAttribute key="Path">
+<mapEntry key="ENV" value="uri:http://www.obeonetwork.org/dsl/environment/2.0.0"/>
+<mapEntry key="Entity" value="uri:http://www.obeonetwork.org/dsl/entity/2.0.0"/>
+<mapEntry key="IN" value="/uml2entity/sample/sample.uml"/>
+<mapEntry key="OUT" value="/uml2entity/sample/out.entity"/>
+<mapEntry key="TYPES" value="platform:/plugin/org.obeonetwork.dsl.environment.common/model/obeo.environment"/>
+<mapEntry key="UML" value="uri:http://www.eclipse.org/uml2/3.0.0/UML"/>
+</mapAttribute>
+<listAttribute key="Superimpose"/>
+</launchConfiguration>

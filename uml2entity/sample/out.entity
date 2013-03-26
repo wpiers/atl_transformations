@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<oent:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:oent="http://www.obeonetwork.org/dsl/entity/2.0.0" xmi:id="_oDnpkJYxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.023+0100" modifiedOn="2013-03-26T17:24:26.023+0100">
+  <blocks xmi:id="_oDnpkZYxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.023+0100" modifiedOn="2013-03-26T17:24:26.024+0100" name="SamplePackage">
+    <entities xmi:id="_oDnpkpYxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.024+0100" modifiedOn="2013-03-26T17:24:26.024+0100" name="Class1">
+      <ownedAttributes xmi:id="_oDnpk5YxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.024+0100" modifiedOn="2013-03-26T17:24:26.024+0100" name="p11" multiplicity="1">
+        <type href="platform:/plugin/org.obeonetwork.dsl.environment.common/model/obeo.environment#_s5F-EKwKEd2XLNOhkJIazw"/>
+      </ownedAttributes>
+      <ownedAttributes xmi:id="_oDnplJYxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.024+0100" modifiedOn="2013-03-26T17:24:26.025+0100" name="p12" multiplicity="1">
+        <type href="platform:/plugin/org.obeonetwork.dsl.environment.common/model/obeo.environment#_s5FXAawKEd2XLNOhkJIazw"/>
+      </ownedAttributes>
+    </entities>
+    <entities xmi:id="_oDnplZYxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.024+0100" modifiedOn="2013-03-26T17:24:26.024+0100" name="Class2">
+      <ownedAttributes xmi:id="_oDnplpYxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.024+0100" modifiedOn="2013-03-26T17:24:26.025+0100" name="p21" multiplicity="1">
+        <type href="platform:/plugin/org.obeonetwork.dsl.environment.common/model/obeo.environment#_s5F-EKwKEd2XLNOhkJIazw"/>
+      </ownedAttributes>
+      <ownedAttributes xmi:id="_oDnpl5YxEeK-c5nqA5uTPQ" createdOn="2013-03-26T17:24:26.024+0100" modifiedOn="2013-03-26T17:24:26.025+0100" name="p22" multiplicity="1">
+        <type href="platform:/plugin/org.obeonetwork.dsl.environment.common/model/obeo.environment#_s5FXAawKEd2XLNOhkJIazw"/>
+      </ownedAttributes>
+    </entities>
+  </blocks>
+</oent:Root>
